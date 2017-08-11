@@ -168,38 +168,9 @@
 <p>#设置用户名和邮箱信息</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name <span class="string">"[name]"</span>  </div><div class="line">$ git config --global user.email <span class="string">"[email]"</span></div></pre></td></tr></table></figure>
 <hr>
-<p>#查看是否设置成功<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config user.name</div><div class="line">$ git config user.email</div></pre></td></tr></table></figure></p>
-<p>#将已建好的普通文件夹变成管理库文件夹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git init //确保在当前文件夹下输入该命令</div></pre></td></tr></table></figure></p>
-<p>#新建一个文件夹，并将其变成管理库文件夹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git init [文件名]</div></pre></td></tr></table></figure></p>
-<hr>
-<p>#在git管理库中添加文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> $ git add [文件名] //指定文件添加</div><div class="line"> $ git add . //添加所有文件</div><div class="line">//当文件有所修改的时候，也会用到该命令进行保存</div></pre></td></tr></table></figure></p>
-<p>#添加commit信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git commit -m <span class="string">"[msg]"</span></div></pre></td></tr></table></figure></p>
-<p>#修改后，保存文件并添加commit信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git commit -am <span class="string">"[msg]"</span>//确保文件之前已经添加到git管理库中</div></pre></td></tr></table></figure></p>
-<p>#查看commit信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">log</span></div><div class="line">$ git <span class="built_in">log</span> --oneline //行显示</div><div class="line">$ git <span class="built_in">log</span> --oneline --graph //图显示</div></pre></td></tr></table></figure></p>
-<p>#查看内容的差异<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git diff //文件处于unstaged状态下查看</div><div class="line">$ git diff --cached //文件处于staged状态下查看和上一次commit下的不同</div><div class="line">$ git diff --HEAD //unstaged和staged两种状态下</div></pre></td></tr></table></figure></p>
-<p>#查看git中的状态<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git status </div><div class="line">$ git status -s //缩略显示</div></pre></td></tr></table></figure></p>
-<p>#忘记某个操作，回去修改却不修改commit信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git add [文件名]//例如这是忘记的操作,然后再执行以下命令</div><div class="line">$ git commit --amend --no-edit //此时操作已执行，但却不会修改commit信息，弹出的仍是上一次的commit信息</div></pre></td></tr></table></figure></p>
-<p>#回到过去（reset）（针对commit）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git reset [文件名] //让该文件从staged状态变为unstaged状态</div><div class="line">$ git reset --hard HEAD //指向最新的commit</div><div class="line">$ git reset --hard HEAD^ //回到上一个的commit去</div><div class="line">$ git reset --hard HEAD^^ //回到上上一个的commit去</div><div class="line">$ git reset --hard HEAD~[2,3,4,...,n] //回到前n个</div></pre></td></tr></table></figure></p>
-<p>#回到从前（checkout）[针对单个文件]<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git checkout [commit信息的id名] -- [文件名] //让该文件回到该commit时的状态（id名可通过 git <span class="built_in">log</span> 或者 git reflog 查看到）</div></pre></td></tr></table></figure></p>
-<hr>
-<p>#reset和checkout的其中一个区别是checkout回到从前其commit的状态仍然存在，而reset回到过去会忽略了其跳过了的commit（可通过 git log 查看到）</p>
-<hr>
-<p>#如果又不想回到过去，想回到未来<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git reflog //查看到每条返回的记录（记录中有id的信息）</div><div class="line">$ git reset --hard [id名] //回到想回的地方</div></pre></td></tr></table></figure></p>
-<p>#建立分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git branch [分支名称] //此时还在master分支上（第一种方法）</div><div class="line">$ git checkout -b [分支名称] //已经移动到该分支上（第二种方法）</div></pre></td></tr></table></figure></p>
-<p>#查看分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch //显示所有分支</div></pre></td></tr></table></figure></p>
-<p>#切换分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git checkout [分支名]</div></pre></td></tr></table></figure></p>
-<p>#删除分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git checkout master //先切换到主分支</div><div class="line">$ git branch -b [分支名]</div></pre></td></tr></table></figure></p>
-<p>#将分支上的内容推到master上<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git merge (--no-ff -m <span class="string">"[msg]"</span>) [分支名] //()中的也可以不写</div><div class="line">$ git rebase [分支名] //新的提交会替换旧的提交</div></pre></td></tr></table></figure></p>
-<p>#临时修改，放入缓存区<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git stash //将正在编写的文件放到缓存区中，此时可以去处理其他的事</div><div class="line">$ git stash pop //开始继续修改</div></pre></td></tr></table></figure></p>
-<p>#将本地代码库和github连接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git remote add origin [url]</div><div class="line">$ git push -u origin master</div></pre></td></tr></table></figure></p>
-<hr>
-<p>#当本地git中的内容进行修改后，则需再通过<br> $ git push -u origin master[或其他分支名（哪个分支的内容修改了就写哪个分支）] 与github进行同步</p>
-<p>#当远程仓库github上的内容修改后，则通过<br> $ git pull –rebase origin master 与本地进行同步</p>
-<hr>
-<p>#删除远程管理库github上的分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin -d [分支名]</div></pre></td></tr></table></figure></p>
-<hr>
-<p>#最后，附上图一张<br><img src="/img/git-status.png" alt="git状态流程图"></p>
-
+        
+          <a class="article-more-a" href="/2017/08/10/first-blog/#more">more >></a>
+        
       
 
       
