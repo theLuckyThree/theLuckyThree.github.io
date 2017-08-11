@@ -172,6 +172,9 @@
 <p>#将已建好的普通文件夹变成管理库文件夹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git init //确保在当前文件夹下输入该命令</div></pre></td></tr></table></figure></p>
 <p>#新建一个文件夹，并将其变成管理库文件夹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git init [文件名]</div></pre></td></tr></table></figure></p>
 <hr>
+<p>#在git管理库中添加文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> $ git add [文件名] //指定文件添加</div><div class="line"> $ git add . //添加所有文件</div><div class="line">//当文件有所修改的时候，也会用到该命令进行保存</div></pre></td></tr></table></figure></p>
+<p>#添加commit信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git commit -m <span class="string">"[msg]"</span></div></pre></td></tr></table></figure></p>
+<p>#修改后，保存文件并添加commit信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git commit -am <span class="string">"[msg]"</span>//确保文件之前已经添加到git管理库中</div></pre></td></tr></table></figure></p>
 
       
 
